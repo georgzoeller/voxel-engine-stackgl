@@ -130,7 +130,9 @@ function Game(opts) {
   
   this.timer = this.initializeTimer((opts.tickFPS || 16))
   this.paused = false
-
+  this.registry = this.plugins.get('voxel-registry')
+  this.materials = {}
+  this.materials.find = this.registry.getBlockIndex
   this.spatial = new SpatialEventEmitter
   this.region = regionChange(this.spatial, aabb([0, 0, 0], [1, 1, 1]), this.chunkSize)
   this.voxelRegion = regionChange(this.spatial, 1)
@@ -326,7 +328,7 @@ Game.prototype.setBlock = function(pos, val) {
   var c = this.voxels.chunkAtPosition(pos)
   var chunk = this.voxels.chunks[c.join('|')]
   if (!chunk) {
-      self.voxels.requestMissingChunks(pos)
+      this.voxels.requestMissingChunks(pos)
       //self.emit('missingChunk', c.join('|'))
       return// todo - does self.emit('missingChunk', c.join('|')) make sense here?
   }
