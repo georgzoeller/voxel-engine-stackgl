@@ -130,7 +130,7 @@ function Game(opts) {
   
   this.timer = this.initializeTimer((opts.tickFPS || 16))
   this.paused = false
-  this.registry = this.plugins.get('voxel-registry')
+
   this.spatial = new SpatialEventEmitter
   this.region = regionChange(this.spatial, aabb([0, 0, 0], [1, 1, 1]), this.chunkSize)
   this.voxelRegion = regionChange(this.spatial, 1)
@@ -172,7 +172,7 @@ function Game(opts) {
     plugins.add(name, pluginOpts[name])
   }
   plugins.loadAll()
-
+  this.registry = this.plugins.get('voxel-registry')
 
   // textures loaded, now can render chunks
   this.stitcher = plugins.get('voxel-stitch')
