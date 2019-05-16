@@ -326,7 +326,8 @@ Game.prototype.setBlock = function(pos, val) {
   var c = this.voxels.chunkAtPosition(pos)
   var chunk = this.voxels.chunks[c.join('|')]
   if (!chunk) {
-      self.emit('missingChunk', c.join('|'))
+      self.voxels.requestMissingChunks(pos)
+      //self.emit('missingChunk', c.join('|'))
       return// todo - does self.emit('missingChunk', c.join('|')) make sense here?
   }
   this.addChunkToNextUpdate(chunk)
