@@ -131,8 +131,6 @@ function Game(opts) {
   this.timer = this.initializeTimer((opts.tickFPS || 16))
   this.paused = false
   this.registry = this.plugins.get('voxel-registry')
-  this.materials = {}
-  this.materials.find = this.registry.getBlockIndex
   this.spatial = new SpatialEventEmitter
   this.region = regionChange(this.spatial, aabb([0, 0, 0], [1, 1, 1]), this.chunkSize)
   this.voxelRegion = regionChange(this.spatial, 1)
@@ -316,14 +314,14 @@ Game.prototype.canCreateBlock = function(pos) {
 }
 
 Game.prototype.createBlock = function(pos, val) {
-  if (typeof val === 'string') val = this.materials.find(val)
+  if (typeof val === 'string') val = this.registry.getBlockIndex(val)
   if (!this.canCreateBlock(pos)) return false
   this.setBlock(pos, val)
   return true
 }
 
 Game.prototype.setBlock = function(pos, val) {
-  if (typeof val === 'string') val = this.materials.find(val)
+  if (typeof val === 'string') val = this.registry.getBlockIndex(val)
   var old = this.voxels.voxelAtPosition(pos, val)
   var c = this.voxels.chunkAtPosition(pos)
   var chunk = this.voxels.chunks[c.join('|')]
