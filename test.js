@@ -45,6 +45,7 @@ gameTest(function removeItem(game, t) {
 })
 
 gameTest(function getBlock(game, t) {
+  console.log(game.getBlock([50,50,50]))
   t.equal(game.getBlock([50, 50, 50]), 0)
 })
 
