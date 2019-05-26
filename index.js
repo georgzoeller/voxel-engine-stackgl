@@ -573,6 +573,7 @@ Game.prototype.removeFarChunks = function(playerPosition) {
 }
 
 Game.prototype.addChunkToNextUpdate = function(chunk) {
+  if (!chunk) return
   this.chunksNeedsUpdate[chunk.position.join('|')] = chunk
 }
 

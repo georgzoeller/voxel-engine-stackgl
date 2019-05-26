@@ -1,16 +1,17 @@
 {
   "name": "voxel-engine-stackgl",
   "description": "make games with voxel.js and stackgl",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "repository": {
     "type": "git",
-    "url": "git@github.com:deathcap/voxel-engine-stackgl.git"
+    "url": "git@github.com:georgzoeller/voxel-engine-stackgl.git"
   },
   "contributors": [
     "Max Ogden <max@maxogden.com> (https://github.com/maxogden)",
     "Kumavis <a.aa.akio.aaron@gmail.com> (https://github.com/kumavis)",
     "Deathcap <deathcap@gmx.co.uk> (https://github.com/deathcap)",
-    "Mikola Lysenko <mikolalysenko@gmail.com> (https://github.com/mikolalysenko/)"
+    "Mikola Lysenko <mikolalysenko@gmail.com> (https://github.com/mikolalysenko/)",
+    "Georg Zoeller (https://github.com/georgzoeller/"
   ],
   "dependencies": {
     "aabb-3d": "^0.1.0",
